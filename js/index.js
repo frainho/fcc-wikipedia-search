@@ -5,19 +5,23 @@ $(document).ready(function() {
     $.ajax({
       type: "GET",
       url: "https://en.wikipedia.org/w/api.php",
-      data: { action: "opensearch", search: a, format: "json" },
+      data: {
+        action: "opensearch",
+        search: a,
+        format: "json"
+      },
       dataType: "jsonp",
       contentType: "application/json; charset=utf-8",
       success: function(result) {
         $(result[1]).each(function(i, value) {
           $("#data").append(
             "<p class='articleStyling'><b>" +
-              value +
-              "</b><br>" +
-              result[2][i] +
-              "<br><a href='" +
-              result[3][i] +
-              "'> Go to article</a></p>"
+            value +
+            "</b><br>" +
+            result[2][i] +
+            "<br><a href='" +
+            result[3][i] +
+            "'> Go to article</a></p>"
           );
         });
       }
